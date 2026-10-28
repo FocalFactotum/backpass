@@ -499,7 +499,13 @@ test("selected memory transitions reanalyze under the same surface hash and rema
     assert.equal(hash, surfaceHash);
     const evidence = state.listEvidence();
     assert.equal(evidence[0].memoryPath, target || "AGENTS.md");
-    const folded = await foldForRun({ config }, file, hash, skills, evidence.map((record) => record.transcript));
+    const folded = await foldForRun(
+      { config },
+      file,
+      hash,
+      skills,
+      evidence.map((record) => record.transcript),
+    );
     assert.equal(folded.analyzedSessions, 1);
     assert.equal(folded.instructions.find((entry) => entry.instruction === "AG-001").positive, 1);
   }
