@@ -23,10 +23,11 @@ import { prefetchRemoteTranscripts } from "../discovery/hosts.js";
 import { pruneHostCache } from "../discovery/cache.js";
 
 /**
- * The memory file a run optimizes: the first configured file that exists (AGENTS.md by
- * default - canonical). Resolution is pointer-aware: a CLAUDE.md that imports
- * `@AGENTS.md` or resolves through a symlink to the same file is covered by optimizing
- * AGENTS.md and needs no mention. A second file with its own content is NOT updated -
+ * The memory file a run optimizes: the named memory target, or the first configured
+ * file that exists (AGENTS.md by default - canonical). Resolution is pointer-aware:
+ * a CLAUDE.md that imports `@AGENTS.md` or resolves through a symlink to the same file
+ * is covered by optimizing AGENTS.md and needs no mention. Without a memory target,
+ * a second file with its own content is NOT updated -
  * that would either be ignored silently or double-written into divergence - so the run
  * says so and recommends consolidating.
  *
