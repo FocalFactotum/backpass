@@ -168,7 +168,7 @@ function sessionCreateTimeoutError({ agent, acpxAgentArgs, timeoutMs, result }) 
 const MODEL_REJECTED =
   /did not advertise that model|does not support this model|session\/set_(?:config_option|model) for model/i;
 
-// Provider billing refusals can appear only on the first paid call, after a successful
+// Provider billing refusals may first appear on a paid call, after a successful
 // zero-token probe. A bare 429 or rate limit is transient, not exhausted funding.
 const BILLING_REJECTED =
   /\binsufficient[ _](?:account[ _])?(?:funds|credits?|quota)\b|\bcredit balance is too low\b|\b(?:billing|spending)[ _]hard[ _]limit[ _](?:reached|exceeded)\b|\byou exceeded your current quota\b|\b(?:HTTP(?:\/\d(?:\.\d)?)?\s+402|402\s+Payment Required)\b/i;
