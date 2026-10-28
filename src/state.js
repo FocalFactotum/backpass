@@ -248,7 +248,7 @@ function migrateEvidenceRecord(record, transcript, identity) {
   };
 }
 
-export const ANALYSIS_INDEX_VERSION = 4;
+export const ANALYSIS_INDEX_VERSION = 5;
 
 /**
  * Cache key for a transcript's analysis: its content signature, the memory-surface hash,
@@ -264,8 +264,9 @@ export function evidenceKey(transcript, memoryHash) {
  * `skipped` entry is re-derived because the skip decision depends on configuration
  * (`minUserTurns`) rather than on the model - recomputing it costs one local file read.
  */
-export function isEvidenceFresh(evidence, transcript, memoryHash) {
+export function isEvidenceFresh(evidence, transcript, memoryHash, memoryPath = null) {
   if (!evidence || evidence.status !== "ok") return false;
+  if (memoryPath !== null && evidence.memoryPath !== memoryPath) return false;
   return evidence.key === evidenceKey(transcript, memoryHash);
 }
 
