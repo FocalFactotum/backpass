@@ -405,8 +405,7 @@ memory-surface hash, and the analysis-index version. The surface hash covers the
 set plus every project skill's name and description. Reuse also requires the same analyzed
 memory file: targeting the primary file reuses untargeted analysis, while switching to a
 separate memory file requires analysis for that file before proposing. Edit a memory file or
-skill description
-and the evidence correctly re-computes; edit only a skill body and the cache remains valid
+skill description and the evidence correctly re-computes; edit only a skill body and the cache remains valid
 because bodies are inspected only for failed-trigger confirmation. A repo without skills
 keeps the prior memory-set hash. A surface edit therefore reanalyzes without `--force` - that
 is not a cache miss, it is the cache doing its job - and the run says so on stderr, naming the
@@ -450,7 +449,7 @@ majority-excluded cluster, including a pure-orchestration cluster, remains clear
 as a report-only diagnostic rather than becoming an instruction in the project's memory
 file; an uncorroborated pure-orchestration singleton stays hidden.
 
-Only evidence with the current transcript, memory-surface, and analysis-index cache key,
+Only evidence meeting the [cache rules above](#3-calculate-loss---one-cheap-call-per-transcript),
 stamped with one of the two interaction categories, and belonging to this run's selected
 sample is folded into a proposal. A transcript that fell outside the time window or
 `maxTranscripts` cap, disappeared, or still has legacy evidence can leave an evidence file
